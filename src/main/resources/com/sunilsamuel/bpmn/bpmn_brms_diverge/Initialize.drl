@@ -1,0 +1,30 @@
+package com.sunilsamuel.bpmn.bpmn_brms_diverge;
+import org.kie.api.runtime.process.WorkflowProcessInstance;
+
+
+import java.util.List
+import java.util.ArrayList
+import com.sunilsamuel.bpmn.bpmn_brms_diverge.Employee
+
+query "get_employees" ()
+    $employees: List() from collect(Employee())
+end
+
+
+rule "Initialize All Entry"
+ruleflow-group "Initialize"
+when
+    $process : WorkflowProcessInstance()
+then
+	List employees = new ArrayList<Employee>();
+	employees.add (new Employee ("Person1",100,"Entry","A"));
+	employees.add (new Employee ("Person2",200,"Junior","C"));
+	employees.add (new Employee ("Person3",300,"Senior","B"));
+	employees.add (new Employee ("Person4",400,"Entry","C"));
+	employees.add (new Employee ("Person5",500,"Junior","A"));
+	employees.add (new Employee ("Person6",600,"Senior","B"));
+	$process.setVariable("employees",employees);
+	Integer index = new Integer(0);
+	$process.setVariable("index",index);
+    retract($process);
+end

@@ -1,0 +1,8 @@
+<kmodule xmlns="http://www.drools.org/xsd/kmodule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<kbase name="diversionKieBase" default="false" packages="com.sunilsamuel.bpmn.bpmn_brms_diverge">
+		<ksession name="diversionStateLess" default="true" type="stateless" />
+	</kbase>
+
+
+</kmodule>

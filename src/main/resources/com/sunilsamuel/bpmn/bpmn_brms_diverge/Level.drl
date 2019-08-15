@@ -1,0 +1,32 @@
+package com.sunilsamuel.bpmn.bpmn_brms_diverge;
+
+import com.sunilsamuel.bpmn.bpmn_brms_diverge.Employee
+
+rule "Entry Level Employee"
+ruleflow-group "Entry-Level"
+when
+	$employee : Employee (status == "Entry")
+then
+	$employee.setSalary(35000.00);
+	System.out.println("INSERTING Entry Level");
+end
+
+
+rule "Junior Level Employee"
+ruleflow-group "Junior-Level"
+when
+	$employee : Employee (status == "Junior")
+then
+	$employee.setSalary(55000.00);
+	System.out.println("INSERTING Junior ENTRY");
+end
+
+
+rule "Senior Level Employee"
+ruleflow-group "Senior-Level"
+when
+	$employee : Employee (status == "Senior")
+then
+	$employee.setSalary(100000.00);
+	System.out.println("INSERTING Senior ENTRY");
+end

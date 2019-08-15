@@ -1,0 +1,42 @@
+package com.sunilsamuel.bpmn.bpmn_brms_diverge;
+
+import com.sunilsamuel.bpmn.bpmn_brms_diverge.Employee
+
+rule "Process Group A"
+ruleflow-group "Group"
+when
+    $employee : Employee (group == "A")
+then
+    // Group A gets 25% increase
+    System.out.println (drools.getRule().getName()+" current salary ["+$employee.getSalary() +"] for ["+$employee.getName()+"]");
+    modify ($employee) {
+        setSalary($employee.getSalary() * 1.25)
+    }
+    System.out.println (drools.getRule().getName()+ "processed new salary ["+$employee.getSalary() +"]");
+end
+
+rule "Process Group B"
+ruleflow-group "Group"
+when
+    $employee : Employee (group == "B")
+then
+    // Group B gets 28% increase
+    System.out.println (drools.getRule().getName()+" current salary ["+$employee.getSalary() +"] for ["+$employee.getName()+"]");
+    modify ($employee) {
+        setSalary($employee.getSalary() * 1.28)
+    }
+    System.out.println (drools.getRule().getName()+ "processed new salary ["+$employee.getSalary() +"]");
+end
+
+rule "Process Group C"
+ruleflow-group "Group"
+when
+    $employee : Employee (group == "C")
+then
+    // Group C gets 30% increase
+    System.out.println (drools.getRule().getName()+" current salary ["+$employee.getSalary() +"] for ["+$employee.getName()+"]");
+    modify ($employee) {
+        setSalary($employee.getSalary() * 1.30)
+    }
+    System.out.println (drools.getRule().getName()+ "processed new salary ["+$employee.getSalary() +"]");
+end    
